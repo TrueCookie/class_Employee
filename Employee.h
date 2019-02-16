@@ -19,15 +19,12 @@ public:
 	void set_salary();
 	void set(std::string, std::string, std::string);
 	void print();
-	void change_pos(const std::string);
-	void change_salary(const int new_sal);
+	void change_pos(std::string);
+	void change_salary(float new_sal);
 	int age();
 	int experience();
 	int years_from(Date date);
 	void raise_salary();
 	void lay_off();
-
-
-
 };
 

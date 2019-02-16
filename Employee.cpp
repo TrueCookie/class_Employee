@@ -4,6 +4,7 @@
 #include <ctime>
 #include <iostream>
 #include <iomanip>
+#include <cmath>
 
 Employee::Employee(){
 	frst_name = new std::string("no name");
@@ -31,20 +32,17 @@ Employee::~Employee(){
 	delete position;
 }
 
-void Employee::set_salary() {
-	if (*this->position == "director") {
+void Employee::set_salary() { 
+	std::string pos = *this->position;
+	if (pos == "director") {
 		salary = 80000;
-	}
-	else if (*this->position == "director dep") {
+	}else if (pos == "director dep") {
 		salary = 60000;
-	}
-	else if (*this->position == "manager") {
+	}else if (pos == "manager") {
 		salary = 60000;
-	}
-	else if (*this->position == "cashier") {
+	}else if (pos == "cashier") {
 		salary = 30000;
-	}
-	else if (*this->position == "security") {
+	}else if (pos == "security") {
 		salary = 25000;
 	}
 }
@@ -65,8 +63,8 @@ void Employee::change_pos(const std::string new_pos) {
 	*position = new_pos;
 }
 
-void Employee::change_salary(const int new_sal) {
-	salary = new_sal;
+void Employee::change_salary(float new_sal) {
+	salary = (int)new_sal;
 }
 
 int Employee::age() {
@@ -85,32 +83,18 @@ int Employee::years_from(Date date) {
 }
 
 void Employee::raise_salary() {
-	if(this->experience() >= 15) {
-		salary *= 1.03;
-	} else if (this->experience() >= 20) {
-		salary *= 1.05;
-	} else if (this->experience() >= 25) {
-		salary *= 1.1;
-	}else if (this->experience() >= 30) {
-		salary *= 1.15;
+	int xp = this->experience();
+	if(xp >= 15) {
+		salary = floor(salary*1.03);
+	} else if (xp >= 20) {
+		salary = floor(salary*1.05);
+	} else if (xp >= 25) {
+		salary = floor(salary*1.1);
+	}else if (xp >= 30) {
+		salary = floor(salary*1.15);
 	}
 }
 
 void Employee::lay_off() {
 	std::cout << "YOU'RE FIRED! YOU'RE FIRED! YOU'RE FIRED! YOU'RE FIRED! YOU'RE FIRED! YOU'RE FIRED!" << std::endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
